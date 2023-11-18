@@ -1,15 +1,8 @@
-package com.htiwari29.logservice.domain;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.htiwari29.logservice.entrypoints.dtos;
 
 import java.time.LocalDateTime;
 
-@Document(collection = "logs")
-public class Log {
-
-	@Id
-	private String id;
+public class LogDTO {
 
 	private String level;
 
@@ -25,26 +18,14 @@ public class Log {
 
 	private String commit;
 
-	private MetaData metadata;
+	private String parentResourceId;
 
-	public Log(String level, String message, String resourceId, LocalDateTime timestamp, String traceId, String spanId,
-			String commit, MetaData metadata) {
-		this.level = level;
-		this.message = message;
-		this.resourceId = resourceId;
-		this.timestamp = timestamp;
-		this.traceId = traceId;
-		this.spanId = spanId;
-		this.commit = commit;
-		this.metadata = metadata;
+	public String getParentResourceId() {
+		return parentResourceId;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+	public void setParentResourceId(String parentResourceId) {
+		this.parentResourceId = parentResourceId;
 	}
 
 	public String getLevel() {
@@ -101,14 +82,6 @@ public class Log {
 
 	public void setCommit(String commit) {
 		this.commit = commit;
-	}
-
-	public MetaData getMetadata() {
-		return metadata;
-	}
-
-	public void setMetadata(MetaData metadata) {
-		this.metadata = metadata;
 	}
 
 }

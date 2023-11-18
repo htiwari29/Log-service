@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://himanshu:mongo123@127.0.0.1:27017/
-      database: logs
+      database: himanshu
 
 server:
   port: 3000

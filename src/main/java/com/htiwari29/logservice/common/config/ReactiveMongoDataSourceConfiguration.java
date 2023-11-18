@@ -6,9 +6,8 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.connection.ConnectionPoolSettings;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.mongo.MongoProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
@@ -17,8 +16,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Configuration
 @EnableMongoRepositories(basePackages = { "com.htiwari29" })
 public class ReactiveMongoDataSourceConfiguration extends AbstractReactiveMongoConfiguration {
-
-	public static final Logger log = LoggerFactory.getLogger(ReactiveMongoDataSourceConfiguration.class);
 
 	private final MongoProperties mongoProperties;
 
@@ -35,6 +32,7 @@ public class ReactiveMongoDataSourceConfiguration extends AbstractReactiveMongoC
 	}
 
 	@Override
+	@Bean
 	public MongoClient reactiveMongoClient() {
 		return MongoClients.create(
 				MongoClientSettings.builder().applyConnectionString(new ConnectionString(mongoProperties.getUri()))
