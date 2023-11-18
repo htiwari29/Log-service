@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://himanshu:mongo123@127.0.0.1:27017/
+      database: logs
+
+server:
+  port: 3000
+
+logging:
+  level:
+    root: INFO
